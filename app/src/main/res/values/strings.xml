@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CryptPass</string>
+    <string name="new_username_password"><![CDATA[New username & password]]></string>
+    <string name="username">Username</string>
+    <string name="title_activity_new_username_and_password">NewUsernameAndPassword</string>
+    <string name="lower_abcd">abcd</string>
+    <string name="abcd">ABCD</string>
+    <string name="_0123">0123</string>
+    <string name="symbols">!@#$</string>
+    <string name="generate">Generate</string>
+    <string name="_16">16</string>
+    <string name="_12">12</string>
+    <string name="_8">8</string>
+    <string name="_4">4</string>
+    <string name="password">Password</string>
+    <string name="save">Save</string>
+</resources>
