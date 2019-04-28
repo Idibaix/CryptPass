@@ -15,4 +15,6 @@
     <string name="password">Password</string>
     <string name="save">Save</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="username_display">Username</string>
+    <string name="password_display">password</string>
 </resources>
