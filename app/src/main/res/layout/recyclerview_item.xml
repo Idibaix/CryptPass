@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<androidx.cardview.widget.CardView
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_card_view"
@@ -12,16 +12,29 @@
     android:orientation="horizontal"
     card_view:cardCornerRadius="4dp">
 
-    <TextView
-        android:id="@+id/username_display"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/username_display" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:id="@+id/username_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/username_display"
+            android:textColor="#000"
+            android:textSize="20sp"
+            />
 
-    <TextView
-        android:id="@+id/password_display"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/password_display" />
+        <TextView
+            android:id="@+id/password_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password_display"
+            android:layout_toEndOf="@id/username_display"
+            android:layout_marginStart="100dp"
+            android:textSize="20sp"
+            android:textColor="#000" />
+    </RelativeLayout>
 
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>
