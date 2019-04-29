@@ -1,22 +1,15 @@
 package com.ozbek.cryptpass;
 
-import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import android.content.DialogInterface;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
+public class GenerateDialog extends Fragment implements DialogInterface.OnCancelListener, DialogInterface.OnDismissListener {
 
-public class GenerateDialog extends Dialog implements View.OnClickListener {
-
-    public GenerateDialog(@NonNull Context context) {super(context);}
+    // Implement the layout for this dialog
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_layout);
-    }
+    public void onCancel(DialogInterface dialog) {}
 
     @Override
-    public void onClick(View v) {}
+    public void onDismiss(DialogInterface dialog) {}
 }
