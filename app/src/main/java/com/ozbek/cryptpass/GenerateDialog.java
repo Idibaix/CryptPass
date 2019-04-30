@@ -1,15 +1,15 @@
 package com.ozbek.cryptpass;
 
-import androidx.fragment.app.Fragment;
-import android.content.DialogInterface;
+import androidx.annotation.NonNull;
+import android.app.Dialog;
+import android.content.Context;;
 
-public class GenerateDialog extends Fragment implements DialogInterface.OnCancelListener, DialogInterface.OnDismissListener {
+class GenerateDialog extends Dialog {
 
-    // Implement the layout for this dialog
+    //The dialog shows but it covers the whole screen and its black.  Fix it
 
-    @Override
-    public void onCancel(DialogInterface dialog) {}
-
-    @Override
-    public void onDismiss(DialogInterface dialog) {}
+    GenerateDialog(@NonNull Context context) {
+        super(context, android.R.style.Theme_NoTitleBar_Fullscreen);
+        setContentView(R.layout.dialog_layout);
+    }
 }
