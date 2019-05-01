@@ -1,40 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFF">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/new_username_password"
-        android:textColor="#000"
-        android:textSize="30sp"
-        android:layout_margin="10dp"
-        android:fontFamily="sans-serif-black" />
-
-    <include
-        layout="@layout/username_layout"
-        android:layout_marginTop="80dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/username_layout_included"
-        android:layout_below="@id/title" />
-
-    <include
-        layout="@layout/password_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/password_layout_included"
-        android:layout_below="@id/username_layout_included" />
-
-    <Button
-        android:id="@+id/btn_save"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/password_layout_included"
-        android:layout_margin="10dp"
-        android:text="@string/save" />
+        android:background="#FFF">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/new_entry"
+            android:textColor="#000"
+            android:textSize="30sp" />
+
+        <include
+            android:id="@+id/username_layout_included"
+            layout="@layout/username_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginTop="30dp" />
+
+        <include
+            android:id="@+id/password_layout_included"
+            layout="@layout/password_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/username_layout_included" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password_layout_included"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            android:textColor="#00FF00"
+            android:background="#FFF"
+            android:text="@string/save" />
+
+    </RelativeLayout>
+
+</ScrollView>
