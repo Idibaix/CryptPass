@@ -18,11 +18,6 @@ class GenerateDialog extends Dialog {
     private RadioButton radio4, radio8, radio12, radio16;
     private Button generatePassword, saveEntry;
 
-    private String capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private String lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
-    private String numbers = "0123456789";
-    private String characters = "!@#$%^&*()";
-
     GenerateDialog(@NonNull Context context) {
         super(context, android.R.style.Theme_NoTitleBar_Fullscreen);
         setContentView(R.layout.dialog_layout);
@@ -63,11 +58,14 @@ class GenerateDialog extends Dialog {
         * There is problem with this.  The method returns a string even if the user makes no selection.
         * Create a fail-safe for a case like that.
         * */
-
-
         int length = 0;
         StringBuilder generatedString = new StringBuilder();
         Random rand = new Random();
+
+        String capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+        String numbers = "0123456789";
+        String characters = "!@#$%^&*()";
 
         if(radio4.isChecked()){length = 4;}
         else if(radio8.isChecked()){length = 8;}
@@ -76,10 +74,10 @@ class GenerateDialog extends Dialog {
         if(length == 0){throw new IllegalArgumentException("You must select a password size!");}
 
         String totalCharacters = "";
-        if(passwordABCD.isChecked()){totalCharacters += capitalLetters;}
-        if(passwordabcd.isChecked()){totalCharacters += lowercaseLetters;}
-        if(password0123.isChecked()){totalCharacters += numbers;}
-        if(passwordSymbols.isChecked()){totalCharacters += characters;}
+        if(passwordABCD.isChecked()){ totalCharacters += capitalLetters;}
+        if(passwordabcd.isChecked()){ totalCharacters += lowercaseLetters;}
+        if(password0123.isChecked()){ totalCharacters += numbers;}
+        if(passwordSymbols.isChecked()){ totalCharacters += characters;}
         if (totalCharacters.isEmpty()) {throw new IllegalArgumentException("You must select at least 1 password characteristic.");}
 
         for(int i = 0; i < length; i++){generatedString.append(totalCharacters.charAt(rand.nextInt(totalCharacters.length())));}
