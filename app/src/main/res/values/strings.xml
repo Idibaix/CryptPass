@@ -17,4 +17,6 @@
     <string name="username_display">Username</string>
     <string name="password_display">Password</string>
     <string name="new_entry">New Entry</string>
+    <string name="hint">Hint</string>
+    <string name="short_hint_for_example_github">Short hint. For example \'Github\'</string>
 </resources>

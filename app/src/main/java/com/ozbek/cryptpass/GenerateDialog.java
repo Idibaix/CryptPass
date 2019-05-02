@@ -8,14 +8,20 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;;
+import android.widget.RadioGroup;
+import java.util.Random;
 
 class GenerateDialog extends Dialog {
-    EditText usernameEditText, passwordEditText;
-    CheckBox usernameABCD, usernameabcd, username0123, usernameSymbols, passwordABCD, passwordabcd, password0123, passwordSymbols;
-    RadioGroup password_radio_container;
-    RadioButton radio4, radio8, radio12, radio16;
-    Button generateUsername, generatePassword, saveEntry;
+    private EditText usernameEditText, passwordEditText, hintEditText;
+    private CheckBox passwordABCD, passwordabcd, password0123, passwordSymbols;
+    private RadioGroup password_radio_container;
+    private RadioButton radio4, radio8, radio12, radio16;
+    private Button generatePassword, saveEntry;
+
+    private String capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private String lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+    private String numbers = "0123456789";
+    private String characters = "!@#$%^&*()";
 
     GenerateDialog(@NonNull Context context) {
         super(context, android.R.style.Theme_NoTitleBar_Fullscreen);
@@ -23,11 +29,7 @@ class GenerateDialog extends Dialog {
 
         usernameEditText = findViewById(R.id.username_field);
         passwordEditText = findViewById(R.id.password_field);
-
-        usernameABCD = findViewById(R.id.uppercase_checkbox);
-        usernameabcd = findViewById(R.id.lowercase_checkbox);
-        username0123 = findViewById(R.id.number_checkbox);
-        usernameSymbols = findViewById(R.id.symbol_checkbox);
+        hintEditText = findViewById(R.id.hint_field);
 
         passwordABCD = findViewById(R.id.upp_checkbox);
         passwordabcd = findViewById(R.id.low_checkbox);
@@ -41,13 +43,47 @@ class GenerateDialog extends Dialog {
         radio12 = findViewById(R.id.twelve);
         radio16 = findViewById(R.id.sixteen);
 
-        generateUsername = findViewById(R.id.btn_username_generate);
         generatePassword = findViewById(R.id.btn_password_generate);
         saveEntry = findViewById(R.id.btn_save);
+
+        generatePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {passwordEditText.setText(generatedPassword());}
+        });
 
         saveEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {}
         });
+    }
+
+    private String generatedPassword(){
+
+        /*
+        * There is problem with this.  The method returns a string even if the user makes no selection.
+        * Create a fail-safe for a case like that.
+        * */
+
+
+        int length = 0;
+        StringBuilder generatedString = new StringBuilder();
+        Random rand = new Random();
+
+        if(radio4.isChecked()){length = 4;}
+        else if(radio8.isChecked()){length = 8;}
+        else if(radio12.isChecked()){length = 12;}
+        else if(radio16.isChecked()){length = 16;}
+        if(length == 0){throw new IllegalArgumentException("You must select a password size!");}
+
+        String totalCharacters = "";
+        if(passwordABCD.isChecked()){totalCharacters += capitalLetters;}
+        if(passwordabcd.isChecked()){totalCharacters += lowercaseLetters;}
+        if(password0123.isChecked()){totalCharacters += numbers;}
+        if(passwordSymbols.isChecked()){totalCharacters += characters;}
+        if (totalCharacters.isEmpty()) {throw new IllegalArgumentException("You must select at least 1 password characteristic.");}
+
+        for(int i = 0; i < length; i++){generatedString.append(totalCharacters.charAt(rand.nextInt(totalCharacters.length())));}
+
+        return generatedString.toString();
     }
 }
