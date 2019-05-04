@@ -1,8 +1,10 @@
 package com.ozbek.cryptpass;
 
 import androidx.annotation.NonNull;
-import android.app.Dialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,15 +14,16 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-class GenerateDialog extends Dialog {
+class GenerateActivity extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText, hintEditText;
     private CheckBox passwordABCD, passwordabcd, password0123, passwordSymbols;
     private RadioButton radio4, radio8, radio12, radio16;
     private Button generatePassword, saveEntry;
 
-    GenerateDialog(@NonNull Context context) {
-        super(context, android.R.style.Theme_NoTitleBar_Fullscreen);
-        setContentView(R.layout.dialog_layout);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_generate);
 
         usernameEditText = findViewById(R.id.username_field);
         passwordEditText = findViewById(R.id.password_field);
@@ -75,7 +78,7 @@ class GenerateDialog extends Dialog {
             for(int i = 0; i < length; i++){generatedString.append(totalCharacters.charAt(rand.nextInt(totalCharacters.length())));}
             return generatedString.toString();
         }
-        else {Toast.makeText(getContext(), "Not a valid password!", Toast.LENGTH_SHORT).show();}
+        else {Toast.makeText(this, "Not a valid password!", Toast.LENGTH_SHORT).show();}
 
         return null;
     }

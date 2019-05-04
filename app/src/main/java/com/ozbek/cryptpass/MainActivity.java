@@ -3,6 +3,8 @@ package com.ozbek.cryptpass;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerViewAdapter adapter;
     FloatingActionButton floatingActionButton;
     RecyclerView.LayoutManager layoutManager;
-    GenerateDialog generateDialog;
+    GenerateActivity generateActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +31,14 @@ public class MainActivity extends AppCompatActivity {
         adapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(adapter);
 
-        generateDialog = new GenerateDialog(this);
+        generateActivity = new GenerateActivity();
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {generateDialog.show();}
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GenerateActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }
