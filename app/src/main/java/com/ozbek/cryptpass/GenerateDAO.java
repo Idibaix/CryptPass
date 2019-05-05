@@ -10,7 +10,8 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
-public interface GenerateDao {
+public interface GenerateDAO {
+
     @Insert
     void insert(Generate generate);
 
@@ -24,5 +25,5 @@ public interface GenerateDao {
     void deleteAllEntries();
 
     @Query("SELECT * FROM generate_table")
-    LiveData<List<Generate>> getAllNotes();
+    LiveData<List<Generate>> getAllEntries();
 }

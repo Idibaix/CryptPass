@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-class GenerateActivity extends AppCompatActivity {
+public class GenerateActivity extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText, hintEditText;
     private CheckBox passwordABCD, passwordabcd, password0123, passwordSymbols;
     private RadioButton radio4, radio8, radio12, radio16;

@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "generate_table")
 public class Generate {
     @PrimaryKey(autoGenerate = true)
+    private int id;
 
     private String username, hint, password;
 
@@ -14,6 +15,10 @@ public class Generate {
         this.hint = hint;
         this.password = password;
     }
+
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 
     public String getUsername() {return username;}
 
