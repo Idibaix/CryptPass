@@ -1,9 +1,8 @@
 package com.ozbek.cryptpass;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +14,11 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class GenerateActivity extends AppCompatActivity {
+
+    public static final String EXTRA_USERNAME = "com.ozbek.cryptpass.EXTRA_USERNAME";
+    public static final String EXTRA_HINT = "com.ozbek.cryptpass.EXTRA_HINT";
+    public static final String EXTRA_PASSWORD = "com.ozbek.cryptpass.EXTRA_PASSWORD";
+
     private EditText usernameEditText, passwordEditText, hintEditText;
     private CheckBox passwordABCD, passwordabcd, password0123, passwordSymbols;
     private RadioButton radio4, radio8, radio12, radio16;
@@ -48,7 +52,15 @@ public class GenerateActivity extends AppCompatActivity {
 
         saveEntry.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {}
+            public void onClick(View v) {
+                Intent data = new Intent();
+                data.putExtra(EXTRA_USERNAME, usernameEditText.getText().toString());
+                data.putExtra(EXTRA_HINT, hintEditText.getText().toString());
+                data.putExtra(EXTRA_PASSWORD, passwordEditText.getText().toString());
+
+                setResult(RESULT_OK, data);
+                finish();
+            }
         });
     }
 
@@ -74,7 +86,7 @@ public class GenerateActivity extends AppCompatActivity {
         if(password0123.isChecked()){totalCharacters += numbers;}
         if(passwordSymbols.isChecked()){totalCharacters += characters;}
         
-        if((!(totalCharacters.equals(""))) && ((length > 0))){
+        if((!(totalCharacters.trim().isEmpty())) && ((length > 0))){
             for(int i = 0; i < length; i++){generatedString.append(totalCharacters.charAt(rand.nextInt(totalCharacters.length())));}
             return generatedString.toString();
         }

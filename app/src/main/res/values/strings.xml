@@ -19,4 +19,5 @@
     <string name="new_entry">New Entry</string>
     <string name="hint">Hint</string>
     <string name="short_hint_for_example_github">Short hint. For example \'Github\'</string>
+    <string name="delete_all">Delete All</string>
 </resources>

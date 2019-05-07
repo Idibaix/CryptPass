@@ -25,23 +25,23 @@ public abstract class GenerateDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new PopulateDbAsynctask(instance).execute();
+            //new PopulateDbAsynctask(instance).execute();
         }
     };
 
-    private static class PopulateDbAsynctask extends AsyncTask<Void, Void, Void>{
-        private GenerateDAO generateDAO;
-
-        private PopulateDbAsynctask(GenerateDatabase database){generateDAO = database.generateDao();}
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            generateDAO.insert(new Generate("oo92", "GitHub", "Ab422ix0"));
-            generateDAO.insert(new Generate("1916", "Pillar", "1916"));
-            generateDAO.insert(new Generate("omar.humber", "outlook", "Ab422ix0!"));
-            generateDAO.insert(new Generate("onur.toronto", "Gmail", "De644ix0"));
-            generateDAO.insert(new Generate("onur.toronto@outlook", "Facebook", "Hi866ix0!"));
-            return null;
-        }
-    }
+//    private static class PopulateDbAsynctask extends AsyncTask<Void, Void, Void>{
+//        private GenerateDAO generateDAO;
+//
+//        private PopulateDbAsynctask(GenerateDatabase database){generateDAO = database.generateDao();}
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            generateDAO.insert(new Generate("oo92", "GitHub", "Ab422ix0"));
+//            generateDAO.insert(new Generate("1916", "Pillar", "1916"));
+//            generateDAO.insert(new Generate("omar.humber", "outlook", "Ab422ix0!"));
+//            generateDAO.insert(new Generate("onur.toronto", "Gmail", "De644ix0"));
+//            generateDAO.insert(new Generate("onur.toronto@outlook", "Facebook", "Hi866ix0!"));
+//            return null;
+//        }
+//    }
 }

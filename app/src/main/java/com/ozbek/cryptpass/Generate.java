@@ -16,6 +16,8 @@ public class Generate {
         this.password = password;
     }
 
+    public Generate(){}
+
     public int getId() {return id;}
 
     public void setId(int id) {this.id = id;}
