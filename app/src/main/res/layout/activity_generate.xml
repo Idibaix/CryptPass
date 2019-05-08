@@ -132,7 +132,7 @@
             android:textSize="20sp"
             android:textColor="#0000FF"
             android:background="#FFF"
-            android:text="@string/generate" />
+            android:text="@string/entries" />
 
         <EditText
             android:id="@+id/hint_field"

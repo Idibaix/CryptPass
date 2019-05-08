@@ -10,20 +10,20 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
-public interface GenerateDAO {
+public interface EntryDAO {
 
     @Insert
-    void insert(Generate generate);
+    void insert(Entries entries);
 
     @Update
-    void update(Generate generate);
+    void update(Entries entries);
 
     @Delete
-    void delete(Generate generate);
+    void delete(Entries entries);
 
-    @Query("DELETE FROM generate_table")
+    @Query("DELETE FROM entries_table")
     void deleteAllEntries();
 
-    @Query("SELECT * FROM generate_table")
-    LiveData<List<Generate>> getAllEntries();
+    @Query("SELECT * FROM entries_table")
+    LiveData<List<Entries>> getAllEntries();
 }

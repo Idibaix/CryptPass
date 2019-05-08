@@ -11,8 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.sentry.Sentry;
+import io.sentry.event.BreadcrumbBuilder;
+import io.sentry.event.UserBuilder;
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private List<Generate> entries = new ArrayList<>();
+    private List<Entries> entries = new ArrayList<>();
+    private OnItemLongClickListener listener;
 
     @NonNull
     @Override
@@ -23,7 +28,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Generate currentEntry = entries.get(position);
+        Entries currentEntry = entries.get(position);
         holder.hint.setText(currentEntry.getHint());
         holder.username.setText(currentEntry.getUsername());
         holder.password.setText(currentEntry.getPassword());
@@ -32,10 +37,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount() {return entries.size();}
 
-    public void setEntries(List<Generate> entries){
+    public void setEntries(List<Entries> entries){
         this.entries = entries;
         notifyDataSetChanged();
     }
+
+    public Entries getEntryAt(int position){return entries.get(position);}
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView username, password, hint;
@@ -46,6 +53,31 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             username = itemView.findViewById(R.id.username_display);
             password = itemView.findViewById(R.id.password_display);
 
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    int position = getAdapterPosition();
+                    if(listener != null && position != RecyclerView.NO_POSITION){
+                        listener.onItemLongClick(entries.get(position));
+                    }
+                    return true;
+                }
+            });
         }
     }
+
+    void unsafeMethod() {throw new UnsupportedOperationException("You shouldn't call this!");}
+
+    void logWithStaticAPI() {
+        Sentry.getContext().recordBreadcrumb(new BreadcrumbBuilder().setMessage("User made an action").build());
+        Sentry.getContext().setUser(new UserBuilder().setEmail("hello@sentry.io").build());
+        Sentry.capture("This is a test");
+
+        try {unsafeMethod();}
+        catch (Exception e) {Sentry.capture(e);}
+    }
+
+    public interface OnItemLongClickListener {void onItemLongClick(Entries entries);}
+
+    public void setOnItemLongClickListener(OnItemLongClickListener listener){this.listener = listener;}
 }

@@ -3,20 +3,24 @@ package com.ozbek.cryptpass;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "generate_table")
-public class Generate {
+import io.sentry.Sentry;
+import io.sentry.event.BreadcrumbBuilder;
+import io.sentry.event.UserBuilder;
+
+@Entity(tableName = "entries_table")
+public class Entries {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
     private String username, hint, password;
 
-    public Generate(String username, String hint, String password){
+    public Entries(String username, String hint, String password){
         this.username = username;
         this.hint = hint;
         this.password = password;
     }
 
-    public Generate(){}
+    public Entries(){}
 
     public int getId() {return id;}
 
@@ -33,4 +37,15 @@ public class Generate {
     public String getPassword() {return password;}
 
     public void setPassword(String password) {this.password = password;}
+
+    void unsafeMethod() {throw new UnsupportedOperationException("You shouldn't call this!");}
+
+    void logWithStaticAPI() {
+        Sentry.getContext().recordBreadcrumb(new BreadcrumbBuilder().setMessage("User made an action").build());
+        Sentry.getContext().setUser(new UserBuilder().setEmail("hello@sentry.io").build());
+        Sentry.capture("This is a test");
+
+        try {unsafeMethod();}
+        catch (Exception e) {Sentry.capture(e);}
+    }
 }
