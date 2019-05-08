@@ -28,15 +28,4 @@ public abstract class EntryDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {super.onCreate(db);}
     };
-
-    void unsafeMethod() {throw new UnsupportedOperationException("You shouldn't call this!");}
-
-    void logWithStaticAPI() {
-        Sentry.getContext().recordBreadcrumb(new BreadcrumbBuilder().setMessage("User made an action").build());
-        Sentry.getContext().setUser(new UserBuilder().setEmail("hello@sentry.io").build());
-        Sentry.capture("This is a test");
-
-        try {unsafeMethod();}
-        catch (Exception e) {Sentry.capture(e);}
-    }
 }
