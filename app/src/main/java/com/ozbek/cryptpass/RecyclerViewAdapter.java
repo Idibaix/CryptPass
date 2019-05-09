@@ -11,10 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.sentry.Sentry;
-import io.sentry.event.BreadcrumbBuilder;
-import io.sentry.event.UserBuilder;
-
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private List<Entries> entries = new ArrayList<>();
     private OnItemLongClickListener listener;
@@ -57,9 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public boolean onLongClick(View v) {
                     int position = getAdapterPosition();
-                    if(listener != null && position != RecyclerView.NO_POSITION){
-                        listener.onItemLongClick(entries.get(position));
-                    }
+                    if(listener != null && position != RecyclerView.NO_POSITION){listener.onItemLongClick(entries.get(position));}
                     return true;
                 }
             });
@@ -69,4 +63,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public interface OnItemLongClickListener {void onItemLongClick(Entries entries);}
 
     public void setOnItemLongClickListener(OnItemLongClickListener listener){this.listener = listener;}
+
+    /*
+    * 1.  When editing, the edit page does not contain the old entry and does not update
+    * 2.  Add option to input security questions & answers
+    * 3.  On the list, show the hint, username and password as round black symbols
+    * */
 }

@@ -3,10 +3,6 @@ package com.ozbek.cryptpass;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import io.sentry.Sentry;
-import io.sentry.event.BreadcrumbBuilder;
-import io.sentry.event.UserBuilder;
-
 @Entity(tableName = "entries_table")
 public class Entries {
     @PrimaryKey(autoGenerate = true)

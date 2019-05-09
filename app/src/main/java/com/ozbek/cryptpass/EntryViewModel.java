@@ -8,10 +8,6 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import io.sentry.Sentry;
-import io.sentry.event.BreadcrumbBuilder;
-import io.sentry.event.UserBuilder;
-
 public class EntryViewModel extends AndroidViewModel {
     private EntryRepository repository;
     private LiveData<List<Entries>> allEntries;

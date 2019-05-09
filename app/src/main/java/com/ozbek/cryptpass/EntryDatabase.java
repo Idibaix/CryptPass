@@ -8,10 +8,6 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import io.sentry.Sentry;
-import io.sentry.event.BreadcrumbBuilder;
-import io.sentry.event.UserBuilder;
-
 @Database(entities = {Entries.class}, version = 2)
 public abstract class EntryDatabase extends RoomDatabase {
 

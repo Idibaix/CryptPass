@@ -13,10 +13,6 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-import io.sentry.Sentry;
-import io.sentry.event.BreadcrumbBuilder;
-import io.sentry.event.UserBuilder;
-
 public class AddEditEntry extends AppCompatActivity {
 
     public static final String EXTRA_USERNAME = "com.ozbek.cryptpass.EXTRA_USERNAME";
@@ -27,12 +23,11 @@ public class AddEditEntry extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText, hintEditText;
     private CheckBox passwordABCD, passwordabcd, password0123, passwordSymbols;
     private RadioButton radio4, radio8, radio12, radio16;
-    private Button generatePassword, saveEntry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_generate);
+        setContentView(R.layout.activity_addEdit_entry);
 
         usernameEditText = findViewById(R.id.username_field);
         passwordEditText = findViewById(R.id.password_field);
@@ -48,8 +43,8 @@ public class AddEditEntry extends AppCompatActivity {
         radio12 = findViewById(R.id.twelve);
         radio16 = findViewById(R.id.sixteen);
 
-        generatePassword = findViewById(R.id.btn_password_generate);
-        saveEntry = findViewById(R.id.btn_save);
+        Button generatePassword = findViewById(R.id.btn_password_generate);
+        Button saveEntry = findViewById(R.id.btn_save);
 
         Intent intent = getIntent();
 
@@ -104,7 +99,7 @@ public class AddEditEntry extends AppCompatActivity {
         if(passwordabcd.isChecked()){totalCharacters += lowercaseLetters;}
         if(password0123.isChecked()){totalCharacters += numbers;}
         if(passwordSymbols.isChecked()){totalCharacters += characters;}
-        
+
         if((!(totalCharacters.trim().isEmpty())) && ((length > 0))){
             for(int i = 0; i < length; i++){generatedString.append(totalCharacters.charAt(rand.nextInt(totalCharacters.length())));}
             return generatedString.toString();
