@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Entry updated", Toast.LENGTH_SHORT).show();
 
-        }
-        else{Toast.makeText(this, "Entry not added!", Toast.LENGTH_SHORT).show();}
+        }else{Toast.makeText(this, "Entry not added!", Toast.LENGTH_SHORT).show();}
     }
 }

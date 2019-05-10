@@ -19,6 +19,7 @@ public class AddEditEntry extends AppCompatActivity {
     public static final String EXTRA_HINT = "com.ozbek.cryptpass.EXTRA_HINT";
     public static final String EXTRA_PASSWORD = "com.ozbek.cryptpass.EXTRA_PASSWORD";
     public static final String EXTRA_ID = "com.ozbek.cryptpass.EXTRA_ID";
+    public static final String EXTRA_ENTRY = "com.ozbek.cryptpass.EXTRA_ENTRY";
 
     private EditText usernameEditText, passwordEditText, hintEditText;
     private CheckBox passwordABCD, passwordabcd, password0123, passwordSymbols;

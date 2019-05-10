@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="sans-serif"
             android:text="@string/new_entry"
             android:textColor="#000"
             android:textSize="30sp" />
@@ -23,30 +23,31 @@
             android:id="@+id/username_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/title"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_below="@id/title"
-            android:textColor="#000"
-            android:hint="@string/username" />
+            android:layout_marginBottom="10dp"
+            android:hint="@string/username"
+            android:textColor="#000" />
 
 
         <EditText
             android:id="@+id/password_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_below="@id/username_field"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_below="@id/username_field"
-            android:textColor="#000"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:textColor="#000" />
 
         <LinearLayout
             android:id="@+id/checkbox_password_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/password_field"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:orientation="horizontal">
 
             <CheckBox
@@ -54,32 +55,32 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#000"
-                android:text="@string/abcd" />
+                android:text="@string/abcd"
+                android:textColor="#000" />
 
             <CheckBox
                 android:id="@+id/low_checkbox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#000"
-                android:text="@string/lower_abcd" />
+                android:text="@string/lower_abcd"
+                android:textColor="#000" />
 
             <CheckBox
                 android:id="@+id/num_checkbox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#000"
-                android:text="@string/_0123" />
+                android:text="@string/_0123"
+                android:textColor="#000" />
 
             <CheckBox
                 android:id="@+id/sym_checkbox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#000"
-                android:text="@string/symbols" />
+                android:text="@string/symbols"
+                android:textColor="#000" />
         </LinearLayout>
 
         <RadioGroup
@@ -87,7 +88,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/checkbox_password_container"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:orientation="horizontal">
 
             <RadioButton
@@ -95,32 +97,32 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#000"
-                android:text="@string/_4" />
+                android:text="@string/_4"
+                android:textColor="#000" />
 
             <RadioButton
                 android:id="@+id/eight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#000"
-                android:text="@string/_8" />
+                android:text="@string/_8"
+                android:textColor="#000" />
 
             <RadioButton
                 android:id="@+id/twelve"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#000"
-                android:text="@string/_12" />
+                android:text="@string/_12"
+                android:textColor="#000" />
 
             <RadioButton
                 android:id="@+id/sixteen"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#000"
-                android:text="@string/_16" />
+                android:text="@string/_16"
+                android:textColor="#000" />
         </RadioGroup>
 
         <Button
@@ -129,33 +131,31 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/radiobutton_password_container"
             android:layout_margin="10dp"
-            android:textSize="20sp"
-            android:textColor="#0000FF"
-            android:background="#FFF"
-            android:text="@string/entries" />
+            android:text="@string/entries"
+            android:textColor="#000"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/hint_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="20dp"
-            android:maxLength="15"
             android:layout_below="@id/btn_password_generate"
-            android:textColor="#000"
-            android:hint="@string/short_hint_for_example_github" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:hint="@string/short_hint_for_example_github"
+            android:maxLength="15"
+            android:textColor="#000" />
 
         <Button
             android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/hint_field"
-            android:layout_margin="10dp"
-            android:textSize="20sp"
-            android:textColor="#00FF00"
-            android:background="#FFF"
-            android:text="@string/save" />
+            android:layout_marginTop="50dp"
+            android:text="@string/save"
+            android:textColor="#000"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
