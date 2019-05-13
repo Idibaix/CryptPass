@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(AddEditEntry.EXTRA_PASSWORD, entry.getPassword());
                 intent.putExtra(AddEditEntry.EXTRA_ID, entry.getId());
                 startActivityForResult(intent, EDIT_ENTRY_REQUEST);
+                Toast.makeText(MainActivity.this, "Information sent!", Toast.LENGTH_SHORT).show();
             }
         });
     }

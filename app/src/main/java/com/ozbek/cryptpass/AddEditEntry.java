@@ -19,7 +19,6 @@ public class AddEditEntry extends AppCompatActivity {
     public static final String EXTRA_HINT = "com.ozbek.cryptpass.EXTRA_HINT";
     public static final String EXTRA_PASSWORD = "com.ozbek.cryptpass.EXTRA_PASSWORD";
     public static final String EXTRA_ID = "com.ozbek.cryptpass.EXTRA_ID";
-    public static final String EXTRA_ENTRY = "com.ozbek.cryptpass.EXTRA_ENTRY";
 
     private EditText usernameEditText, passwordEditText, hintEditText;
     private CheckBox passwordABCD, passwordabcd, password0123, passwordSymbols;
@@ -28,7 +27,7 @@ public class AddEditEntry extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addEdit_entry);
+        setContentView(R.layout.activity_addedit_entry);
 
         usernameEditText = findViewById(R.id.username_field);
         passwordEditText = findViewById(R.id.password_field);
@@ -54,6 +53,7 @@ public class AddEditEntry extends AppCompatActivity {
             usernameEditText.setText(intent.getStringExtra(EXTRA_USERNAME));
             passwordEditText.setText(intent.getStringExtra(EXTRA_PASSWORD));
             hintEditText.setText(intent.getStringExtra(EXTRA_HINT));
+            Toast.makeText(this, "Information received!", Toast.LENGTH_SHORT).show();
         }
         else{setTitle("Add Entry");}
 
