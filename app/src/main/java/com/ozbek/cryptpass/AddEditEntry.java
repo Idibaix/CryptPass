@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class AddEditEntry extends AppCompatActivity {
@@ -48,12 +49,18 @@ public class AddEditEntry extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        Toast.makeText(this, "data: "+ Objects.requireNonNull(getIntent().getExtras()).toString(), Toast.LENGTH_LONG).show();
+
         if(intent.hasExtra(EXTRA_ID)){
             setTitle("Edit Entry");
-            usernameEditText.setText(intent.getStringExtra(EXTRA_USERNAME));
-            passwordEditText.setText(intent.getStringExtra(EXTRA_PASSWORD));
-            hintEditText.setText(intent.getStringExtra(EXTRA_HINT));
-            Toast.makeText(this, "Information received!", Toast.LENGTH_SHORT).show();
+            usernameEditText.setText(Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA_USERNAME));
+            passwordEditText.setText(Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA_PASSWORD));
+            hintEditText.setText(Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA_HINT));
+
+            Toast.makeText(this, "Info Received!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA_USERNAME), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA_PASSWORD), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA_HINT), Toast.LENGTH_SHORT).show();
         }
         else{setTitle("Add Entry");}
 
@@ -69,7 +76,7 @@ public class AddEditEntry extends AppCompatActivity {
                 data.putExtra(EXTRA_HINT, hintEditText.getText().toString());
                 data.putExtra(EXTRA_PASSWORD, passwordEditText.getText().toString());
 
-                int id = getIntent().getIntExtra(EXTRA_ID, -1);
+                int id = Objects.requireNonNull(getIntent().getExtras()).getInt(EXTRA_ID, -1);
 
                 if(id != -1){data.putExtra(EXTRA_ID, id);}
 
